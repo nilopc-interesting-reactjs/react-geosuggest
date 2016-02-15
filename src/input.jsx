@@ -63,15 +63,18 @@ class Input extends React.Component {
         this.props.className
       );
 
-    return <input className={classes}
-      ref='input'
-      type='text'
-      {...attributes}
-      value={this.props.value}
-      onKeyDown={this.onInputKeyDown.bind(this)}
-      onChange={this.onChange.bind(this)}
-      onFocus={this.props.onFocus.bind(this)}
-      onBlur={this.props.onBlur.bind(this)} />;
+    return <div className='input-field'>
+      <input className={classes}
+        ref='input'
+        type='text'
+        {...attributes}
+        value={this.props.value}
+        onKeyDown={this.onInputKeyDown.bind(this)}
+        onChange={this.onChange.bind(this)}
+        onFocus={this.props.onFocus.bind(this)}
+        onBlur={this.props.onBlur.bind(this)} />
+      <label htmlFor={this.props.inputId}>{this.props.labelValue}</label>
+    </div>;
   }
 }
 
@@ -82,6 +85,8 @@ class Input extends React.Component {
 Input.defaultProps = {
   className: '',
   value: '',
+  inputId: '',
+  labelValue: '',
   onChange: () => {},
   onFocus: () => {},
   onBlur: () => {},

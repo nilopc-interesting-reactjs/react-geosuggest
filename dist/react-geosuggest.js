@@ -451,6 +451,8 @@ var Geosuggest = (function (_React$Component) {
         _react2['default'].createElement(_input2['default'], _extends({ className: this.props.inputClassName,
           ref: 'input',
           value: this.state.userInput,
+          inputId: this.props.inputId,
+          labelValue: this.props.labelValue,
           onChange: this.onInputChange.bind(this),
           onFocus: this.onInputFocus.bind(this),
           onBlur: this.onInputBlur.bind(this),
@@ -671,15 +673,24 @@ var Input = (function (_React$Component) {
       var attributes = (0, _filterInputAttributes2['default'])(this.props),
           classes = (0, _classnames2['default'])('geosuggest__input', this.props.className);
 
-      return _react2['default'].createElement('input', _extends({ className: classes,
-        ref: 'input',
-        type: 'text'
-      }, attributes, {
-        value: this.props.value,
-        onKeyDown: this.onInputKeyDown.bind(this),
-        onChange: this.onChange.bind(this),
-        onFocus: this.props.onFocus.bind(this),
-        onBlur: this.props.onBlur.bind(this) }));
+      return _react2['default'].createElement(
+        'div',
+        { className: 'input-field' },
+        _react2['default'].createElement('input', _extends({ className: classes,
+          ref: 'input',
+          type: 'text'
+        }, attributes, {
+          value: this.props.value,
+          onKeyDown: this.onInputKeyDown.bind(this),
+          onChange: this.onChange.bind(this),
+          onFocus: this.props.onFocus.bind(this),
+          onBlur: this.props.onBlur.bind(this) })),
+        _react2['default'].createElement(
+          'label',
+          { htmlFor: this.props.inputId },
+          this.props.labelValue
+        )
+      );
     }
   }]);
 
@@ -689,6 +700,8 @@ var Input = (function (_React$Component) {
 Input.defaultProps = {
   className: '',
   value: '',
+  inputId: '',
+  labelValue: '',
   onChange: function onChange() {},
   onFocus: function onFocus() {},
   onBlur: function onBlur() {},

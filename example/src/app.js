@@ -21,6 +21,8 @@ var App = React.createClass({ // eslint-disable-line
         <Geosuggest
           fixtures={fixtures}
           onFocus={this.onFocus}
+          inputId='input_destination'
+          labelValue='Select Destination'
           onBlur={this.onBlur}
           onChange={this.onChange}
           onSuggestSelect={this.onSuggestSelect}

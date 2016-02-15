@@ -312,6 +312,8 @@ class Geosuggest extends React.Component {
       <Input className={this.props.inputClassName}
         ref='input'
         value={this.state.userInput}
+        inputId={this.props.inputId}
+        labelValue={this.props.labelValue}
         onChange={this.onInputChange.bind(this)}
         onFocus={this.onInputFocus.bind(this)}
         onBlur={this.onInputBlur.bind(this)}
