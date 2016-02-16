@@ -38,6 +38,10 @@ var _input = require('./input');
 
 var _input2 = _interopRequireDefault(_input);
 
+var _label = require('./label');
+
+var _label2 = _interopRequireDefault(_label);
+
 var _suggestList = require('./suggest-list');
 
 var _suggestList2 = _interopRequireDefault(_suggestList);
@@ -401,7 +405,6 @@ var Geosuggest = (function (_React$Component) {
           ref: 'input',
           value: this.state.userInput,
           inputId: this.props.inputId,
-          labelValue: this.props.labelValue,
           onChange: this.onInputChange.bind(this),
           onFocus: this.onInputFocus.bind(this),
           onBlur: this.onInputBlur.bind(this),
@@ -416,6 +419,7 @@ var Geosuggest = (function (_React$Component) {
           },
           onEscape: this.hideSuggests.bind(this)
         }, attributes)),
+        _react2['default'].createElement(_label2['default'], { inputId: this.props.inputId, labelValue: this.props.labelValue }),
         _react2['default'].createElement(_suggestList2['default'], {
           isHidden: this.state.isSuggestsHidden,
           suggests: this.state.suggests,

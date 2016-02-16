@@ -7,6 +7,7 @@ import defaults from './defaults';
 import filterInputAttributes from './filter-input-attributes';
 
 import Input from './input';
+import Label from './label';
 import SuggestList from './suggest-list';
 
 // Escapes special characters in user input for regex
@@ -313,7 +314,6 @@ class Geosuggest extends React.Component {
         ref='input'
         value={this.state.userInput}
         inputId={this.props.inputId}
-        labelValue={this.props.labelValue}
         onChange={this.onInputChange.bind(this)}
         onFocus={this.onInputFocus.bind(this)}
         onBlur={this.onInputBlur.bind(this)}
@@ -322,6 +322,8 @@ class Geosuggest extends React.Component {
         onSelect={() => this.selectSuggest(this.state.activeSuggest)}
         onEscape={this.hideSuggests.bind(this)}
         {...attributes} />
+
+      <Label inputId={this.props.inputId} labelValue={this.props.labelValue} />
 
       <SuggestList
         isHidden={this.state.isSuggestsHidden}

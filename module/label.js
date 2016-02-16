@@ -4,8 +4,6 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
@@ -36,13 +34,13 @@ var _filterInputAttributes2 = _interopRequireDefault(_filterInputAttributes);
  * @return {JSX} The icon component.
  */
 
-var Input = (function (_React$Component) {
-  _inherits(Input, _React$Component);
+var Label = (function (_React$Component) {
+  _inherits(Label, _React$Component);
 
-  function Input() {
-    _classCallCheck(this, Input);
+  function Label() {
+    _classCallCheck(this, Label);
 
-    _get(Object.getPrototypeOf(Input.prototype), 'constructor', this).apply(this, arguments);
+    _get(Object.getPrototypeOf(Label.prototype), 'constructor', this).apply(this, arguments);
   }
 
   /**
@@ -50,100 +48,29 @@ var Input = (function (_React$Component) {
    * @type {Object}
    */
 
-  _createClass(Input, [{
-    key: 'onChange',
-
-    /**
-     * When the input got changed
-     */
-    value: function onChange() {
-      this.props.onChange(this.refs.input.value);
-    }
-
-    /**
-     * When a key gets pressed in the input
-     * @param  {Event} event The keypress event
-     */
-  }, {
-    key: 'onInputKeyDown',
-    value: function onInputKeyDown(event) {
-      switch (event.which) {
-        case 40:
-          // DOWN
-          event.preventDefault();
-          this.props.onNext();
-          break;
-        case 38:
-          // UP
-          event.preventDefault();
-          this.props.onPrev();
-          break;
-        case 13:
-          // ENTER
-          event.preventDefault();
-          this.props.onSelect();
-          break;
-        case 9:
-          // TAB
-          this.props.onSelect();
-          break;
-        case 27:
-          // ESC
-          this.props.onEscape();
-          break;
-        default:
-          break;
-      }
-    }
-
-    /**
-     * Focus the input
-     */
-  }, {
-    key: 'focus',
-    value: function focus() {
-      this.refs.input.focus();
-    }
+  _createClass(Label, [{
+    key: 'render',
 
     /**
      * Render the view
      * @return {Function} The React element to render
      */
-  }, {
-    key: 'render',
     value: function render() {
-      var attributes = (0, _filterInputAttributes2['default'])(this.props),
-          classes = (0, _classnames2['default'])('geosuggest__input', this.props.className);
-
-      return _react2['default'].createElement('input', _extends({ className: classes,
-        ref: 'input',
-        type: 'text',
-        id: this.props.inputId
-      }, attributes, {
-        value: this.props.value,
-        onKeyDown: this.onInputKeyDown.bind(this),
-        onChange: this.onChange.bind(this),
-        onFocus: this.props.onFocus.bind(this),
-        onBlur: this.props.onBlur.bind(this) }));
+      return _react2['default'].createElement(
+        'label',
+        { htmlFor: this.props.inputId },
+        this.props.labelValue
+      );
     }
   }]);
 
-  return Input;
+  return Label;
 })(_react2['default'].Component);
 
-Input.defaultProps = {
-  className: '',
-  value: '',
+Label.defaultProps = {
   inputId: '',
-  labelValue: '',
-  onChange: function onChange() {},
-  onFocus: function onFocus() {},
-  onBlur: function onBlur() {},
-  onNext: function onNext() {},
-  onPrev: function onPrev() {},
-  onSelect: function onSelect() {},
-  onEscape: function onEscape() {}
+  labelValue: ''
 };
 
-exports['default'] = Input;
+exports['default'] = Label;
 module.exports = exports['default'];
