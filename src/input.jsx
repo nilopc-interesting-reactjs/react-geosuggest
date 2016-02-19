@@ -34,9 +34,6 @@ class Input extends React.Component {
         event.preventDefault();
         this.props.onSelect();
         break;
-      case 9: // TAB
-        this.props.onSelect();
-        break;
       case 27: // ESC
         this.props.onEscape();
         break;
